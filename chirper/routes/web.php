@@ -34,4 +34,7 @@ Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
+// updateとdestroyのURL直アクセスはindexにリダイレクト
+Route::get('/chirps/{id}', [ChirpController::class, 'index']);
+
 require __DIR__.'/auth.php';
