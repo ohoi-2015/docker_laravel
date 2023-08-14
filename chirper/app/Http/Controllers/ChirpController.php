@@ -33,6 +33,7 @@ class ChirpController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // バリデーション
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ]);
@@ -55,6 +56,7 @@ class ChirpController extends Controller
      */
     public function edit(Chirp $chirp): View
     {
+        // 現在のユーザーに対して指定されたアクションを許可する
         $this->authorize('update', $chirp);
 
         return view('chirps.edit', [
@@ -67,8 +69,10 @@ class ChirpController extends Controller
      */
     public function update(Request $request, Chirp $chirp): RedirectResponse
     {
+        // 現在のユーザーに対して指定されたアクションを許可する
         $this->authorize('update', $chirp);
 
+        // バリデーション
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ]);
@@ -81,8 +85,13 @@ class ChirpController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Chirp $chirp)
+    public function destroy(Chirp $chirp): RedirectResponse
     {
-        //
+        // 現在のユーザーに対して指定されたアクションを許可する
+        $this->authorize('delete', $chirp);
+
+        $chirp->delete();
+
+        return redirect(route('chirps.index'));
     }
 }

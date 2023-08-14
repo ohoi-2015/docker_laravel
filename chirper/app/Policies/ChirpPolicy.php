@@ -37,6 +37,7 @@ class ChirpPolicy
      */
     public function update(User $user, Chirp $chirp): bool
     {
+        // 投稿者のみ編集可能にさせる
         return $chirp->user()->is($user);
     }
 
@@ -45,7 +46,8 @@ class ChirpPolicy
      */
     public function delete(User $user, Chirp $chirp): bool
     {
-        //
+        // 同じロジックを適用する（Chirp を更新する権限のある人は誰でも、Chirp を削除する権限が与えられる）
+        return $this->update($user, $chirp);
     }
 
     /**
