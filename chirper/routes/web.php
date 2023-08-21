@@ -35,6 +35,8 @@ Route::resource('chirps', ChirpController::class)
     ->middleware(['auth', 'verified']);
 
 // updateとdestroyのURL直アクセスはindexにリダイレクト
-Route::get('/chirps/{id}', [ChirpController::class, 'index']);
+Route::get('/chirps/{id}', function () {
+    abort(404);
+});
 
 require __DIR__.'/auth.php';
