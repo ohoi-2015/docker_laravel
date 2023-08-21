@@ -35,8 +35,14 @@ class ChirpController extends Controller
     {
         // バリデーション
         $validated = $request->validate([
-            'message' => 'required|string|max:255',
-        ]);
+            'message' => 'required | string | max:255',
+        ],
+        [
+            'message.required' => '入力してください。',
+            'message.string' => '文字列として入力してください。',
+            'message.max' => '255文字以内で入力してください。',
+        ]
+        );
 
         $request->user()->chirps()->create($validated);
 
@@ -74,8 +80,14 @@ class ChirpController extends Controller
 
         // バリデーション
         $validated = $request->validate([
-            'message' => 'required|string|max:255',
-        ]);
+            'message' => 'required | string | max:255',
+        ],
+        [
+            'message.required' => '入力してください。',
+            'message.string' => '文字列として入力してください。',
+            'message.max' => '255文字以内で入力してください。',
+        ]
+        );
 
         $chirp->update($validated);
 
