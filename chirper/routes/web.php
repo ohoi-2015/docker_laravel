@@ -34,7 +34,7 @@ Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
-// updateとdestroyのURL直アクセスはindexにリダイレクト
+// updateとdestroyのURL直アクセスは404ページ
 Route::get('/chirps/{id}', function () {
     abort(404);
 });
