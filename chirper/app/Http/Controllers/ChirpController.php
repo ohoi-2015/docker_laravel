@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Chirp;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+// use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 
 class ChirpController extends Controller
@@ -39,8 +39,8 @@ class ChirpController extends Controller
         ],
         [
             'message.required' => '入力してください。',
-            'message.string' => '文字列として入力してください。',
-            'message.max' => '255文字以内で入力してください。',
+            'message.string'   => '文字列として入力してください。',
+            'message.max'      => '255文字以内で入力してください。',
         ]
         );
 
@@ -84,8 +84,8 @@ class ChirpController extends Controller
         ],
         [
             'message.required' => '入力してください。',
-            'message.string' => '文字列として入力してください。',
-            'message.max' => '255文字以内で入力してください。',
+            'message.string'   => '文字列として入力してください。',
+            'message.max'      => '255文字以内で入力してください。',
         ]
         );
 
